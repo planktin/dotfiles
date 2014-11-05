@@ -1,0 +1,10 @@
+if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".ruby-version" ]; then
+	source "$rvm_path/scripts/rvm"
+	RUBY_VERSION=$(< "$PWD/.ruby-version")
+	if [ -f ".ruby-gemset" ]; then
+		RUBY_GEMSET=$(< "$PWD/.ruby-gemset")
+		rvm use $RUBY_VERSION@$RUBY_GEMSET
+	else
+		rvm use $RUBY_VERSION
+	fi
+fi
